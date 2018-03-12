@@ -1,0 +1,41 @@
+{% if widget.is_initial %}
+    <div class="file-upload">
+    <div class="preview-widget-row" style="float: left;">
+        <img id="{{ widget.preview_widget_img_id }}" src="{{ widget.value.url }}" class="preview-widget-img"
+             style="max-height: {{ widget.preview_max_height }}; max-width: {{ widget.preview_max_height }}"
+             data-modal-id="{{ widget.preview_widget_modal_id }}"
+             data-modal-img-id="{{ widget.preview_widget_modal_img_id }}"
+             data-modal-caption-id="{{ widget.preview_widget_modal_caption_id }}"
+        />
+    </div>
+    <div class="preview-widget-row" style="float:left; margin-left: 10px;">
+    {% if not widget.hide_currently %}
+        {{ widget.initial_text }}:<a href="{{ widget.value.url }}">{{ widget.value }}</a>
+    {% endif %}
+    {% if not widget.required %}
+        <span class="clearable-file-input">
+                    <input type="checkbox" name="{{ widget.checkbox_name }}" id="{{ widget.checkbox_id }}"/>
+                    <label for="{{ widget.checkbox_id }}">{{ widget.clear_checkbox_label }}</label>
+                </span>
+    {% endif %}
+    <br/>
+    {{ widget.input_text }}:
+{% endif %}
+<input type="{{ widget.type }}" name="{{ widget.name }}"{% include "django/forms/widgets/attrs.html" %} />
+{% if widget.is_initial %}
+    </div>
+    </div>
+{% endif %}
+
+<!-- The Modal -->
+<div id="{{ widget.preview_widget_modal_id }}" class="preview-widget-modal">
+
+    <!-- Modal Content (The Image) -->
+    <img class="preview-widget-modal-img" id="{{ widget.preview_widget_modal_img_id }}"
+         style="max-height: {{ widget.preview_modal_max_height }}; max-width: {{ widget.preview_modal_max_height }}">
+
+    <!-- Modal Caption (Image Text) -->
+    {% if widget.show_caption %}
+        <a id="{{ widget.preview_widget_modal_caption_id }}" target="_blank" class="preview-widget-modal-caption" href=""></a>
+    {% endif %}
+</div>
