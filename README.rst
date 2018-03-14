@@ -63,8 +63,8 @@ sample *models.py* ::
 
     class Product(models.Model):
         name = models.CharField(_('name'), max_length=50)
-        photo = models.ImageField(_('Photo'), upload_to='testing/product', null=True, blank=True)
-        banner = models.ImageField(_('Banner'), upload_to='testing/product', null=True, blank=True)
+        photo = models.ImageField(_('Photo'), upload_to='testing/product', blank=True)
+        banner = models.ImageField(_('Banner'), upload_to='testing/product', blank=True)
 
 
 sample *forms.py* ::
@@ -78,7 +78,7 @@ sample *forms.py* ::
             fields = '__all__'
             widgets = {
                 'photo': ImagePreviewWidget(preview_max_height='80px', preview_modal_max_height='600px', hide_currently=True, ),
-                'banner': ImagePreviewWidget(preview_max_width='150px', preview_modal_max_width='50%' show_caption=False),
+                'banner': ImagePreviewWidget(preview_max_width='150px', preview_modal_max_width='50%', show_caption=False),
             }
 
 As you can see you can override the default settings by giving them as kwargs.
