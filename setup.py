@@ -11,7 +11,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 setup(
     name='django-media-tools',
     version=__import__('media_tools').VERSION,
-    packages=find_packages(),
+    packages=['media_tools'],
     include_package_data=True,
     license='MIT License',
     description='A Django app that provides widgets for media files',
