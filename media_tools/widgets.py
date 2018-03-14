@@ -31,7 +31,7 @@ class ImagePreviewWidget(AdminFileWidget):
         self.config = DEFAULT_IMAGE_PREVIEW_CONFIG.copy()
 
         # Get defined values from the settings and update the default config
-        conf = getattr(settings, 'DJANGO_MEDIA_TOOLS', {})
+        conf = getattr(settings, 'DJANGO_MEDIA_TOOLS_CONFIG', {})
         self.config.update(conf)
         self.config.update(kwargs)
 
